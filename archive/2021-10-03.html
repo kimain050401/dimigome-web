@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/cbdb1fa702.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="https://yaza.live/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="https://yaza.live/favicon.ico" type="image/x-icon" />
+    <title>Yaza.live - 내 야자에 기술을 더하다.</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap');
+        html, body{
+            /* position: absolute; */
+            /* height: 100%; */
+            font-family: 'Noto Sans KR', sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom, rgb(179, 235, 239), rgb(251, 241, 230));
+            background-attachment: fixed;
+        }
+        a{
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        i{
+            padding-right: 5px;
+        }
+        .h1{
+            font-size: 20px;
+        }
+        .bold{
+            font-weight: 900;
+            color: #EF007C;
+        }
+        .text{
+            width: 100px;
+            border-radius: 0px;
+            display: inline-block;
+            background: none;
+            border: 1px solid #a59b4e;  
+            padding: 0px 1px;
+            text-align: center;
+            height: 20px;
+            /* width: 45%; */
+            line-height: 20px;
+            font-weight: 500;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .choose{
+            font-size: 12px;
+            color: #EF007C;
+        }
+        .chooses{
+            font-size: 12px;
+        }
+        .choice{
+            font-size: 10px;
+            width: 10px;
+        }
+        .box-radio-input input[type="radio"]{
+            display: none;
+        }
+        .box-radio-input input[type="radio"] + span{
+            display: inline-block;
+            background: none;
+            border: 1px solid #EF007C;  
+            padding: 0px 1px;
+            text-align: center;
+            height: 20px;
+            width: 145px;
+            line-height: 20px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .box-radio-input input[type="radio"]:checked + span{
+            border: 1px solid #EF007C;
+            background: #EF007C;
+            color: #fff;
+        }
+        .box-radio-inputs input[type="radio"]{
+            display: none;
+        }
+        .box-radio-inputs input[type="radio"] + span{
+            display: inline-block;
+            background: none;
+            border: 1px solid #4EA1A5;
+            padding: 0px 1px;
+            text-align: center;
+            height: 20px;
+            width: 145px;
+            line-height: 20px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .box-radio-inputs input[type="radio"]:checked + span{
+            border: 1px solid #4EA1A5;
+            background: #4EA1A5;
+            color: #fff;
+        }
+        #popup {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .7);
+            z-index: 1;
+        }
+
+        #popup.hide {
+            display: none;
+        }
+
+        #popup.has-filter {
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+
+        #popup .content {
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
+        }
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function gitar(){
+            document.getElementById('okay').style.display = "inline"
+            document.getElementById('okay1').style.display = "inline"
+            document.getElementById('okay').value = ""
+            document.getElementById('okay').disabled = false;
+        }
+        function gitars(){
+            document.getElementById('okay').style.display = "none"
+            document.getElementById('okay1').style.display = "none"
+            document.getElementById('okay').value = "text"
+            document.getElementById('okay').disabled = true;
+        }
+        function gita(){
+            document.getElementById('okays').style.display = "inline"
+            document.getElementById('okays1').style.display = "inline"
+            document.getElementById('okays').value = ""
+            document.getElementById('okays').disabled = false;
+        }
+        function gitas(){
+            document.getElementById('okays').style.display = "none"
+            document.getElementById('okays1').style.display = "none"
+            document.getElementById('okays').value = "text"
+            document.getElementById('okays').disabled = true;
+        }
+    </script>
+    <script>
+        $(document).on("keyup", "input[telOnly]", function() {$(this).val( $(this).val().replace(/[^0-9\s]/gi,"") );})
+    </script>
+    <script>
+        function saveCookie(){
+            var date = new Date();
+            date.setDate(date.getDate() + 7);
+            var willCookie = "";
+            willCookie += "userNumber=" + document.getElementById('number1').value + ";";
+            willCookie += "expires=" + date.toUTCString();
+            document.cookie = willCookie;
+            console.log(willCookie);
+            
+            willCookie = "";
+            willCookie += "userID=" + document.getElementById('id1').value + ";";
+            willCookie += "expires=" + date.toUTCString();
+            document.cookie = willCookie;
+            console.log(willCookie);
+
+            willCookie = "";
+            willCookie += "userClass=" + document.getElementById('class1').value + ";";
+            willCookie += "expires=" + date.toUTCString();
+            document.cookie = willCookie;
+            console.log(willCookie);
+        }
+    </script>
+    <script>
+        function showPopup(hasFilter) {
+            const popup = document.querySelector('#popup');
+
+            if (hasFilter) {
+                popup.classList.add('has-filter');
+            } else {
+                popup.classList.remove('has-filter');
+            }
+
+            popup.classList.remove('hide');
+        }
+
+        function closePopup() {
+            const popup = document.querySelector('#popup');
+            popup.classList.add('hide');
+            document.getElementById("vid").muted = true;
+            var counts = 0
+            playAlert = setInterval(function() {
+                document.getElementById("vid").muted = true;
+                if(counts == 600000){
+                    clearInterval(playAlert);
+                }
+            }, 1);
+        }
+    </script>
+    <div id="popup" class="hide" style="word-break: keep-all;">
+        <div class="content">
+            <a>개발 및 관리 : 1508 김아인, 010-9539-4321</a><br><br>
+            <input class="text" style="width: 154px; border: 1px solid #EF007C; color: black;" type="button" onclick="document.location.href='tel:010-9539-4321'" value="전화">
+            <input class="text" style="width: 154px; border: 1px solid #EF007C; color: black;" type="button" onclick="document.location.href='sms:010-9539-4321'" value="메시지"><br><br>
+            <input class="text" style="width: 312px; border: 1px solid #00a218; color: black;" type="button" onclick="closePopup()" value="닫기">
+        </div>
+    </div>
+    <div style="position: absolute;left: 50%;top: 50%; transform: translate(-50%,-50%);">
+        <div style="border: 1px solid black; border-radius: 10px; position: relative; display: inline-block; padding-right: 20px; padding-left: 20px;">
+            <br>
+            <form method="POST" action="https://api.findflag.kr/student/goout/post">
+                <label class="box-radio-input"><input class="choice" name="texts" type="radio" value="방과후" onclick="gitars(); gitas();"><span><i class="fas fa-book"></i>방과후</span></label>
+                <label class="box-radio-input"><input class="choice" name="texts" type="radio" value="창동" onclick="gitars(); gitas();"><span><i class="fas fa-music"></i>창동</span></label>
+                <label class="box-radio-input"><input class="choice" name="texts" type="radio" value="자동" onclick="gitars(); gitas();"><span><i class="fas fa-tools"></i>자동</span></label>
+                <label class="box-radio-input"><input class="choice" name="texts" type="radio" value="기타활동" onclick="gitar(); gitas();"><span><i class="fas fa-laptop-code"></i>기타활동</span></label>
+                <label class="box-radio-input"><input class="choice" name="texts" type="radio" value="상담_안정실" onclick="gitars(); gitas();"><span><i class="fas fa-bed"></i>상담/안정실</span></label>
+                <label class="box-radio-input"><input class="choice" name="texts" type="radio" value="귀가_외출" onclick="gitars(); gita();"><span><i class="fas fa-home"></i>귀가/외출</span></label><br><br>
+                <label class="box-radio-inputs"><input class="choice" name="texts" type="radio" value="물" onclick="gitars(); gitas();" required><span><i class="fas fa-glass-cheers"></i>물</span></label>
+                <label class="box-radio-inputs"><input class="choice" name="texts" type="radio" value="화장실" onclick="gitars(); gitas();"><span><i class="fas fa-toilet-paper"></i>화장실</span></label>
+                <label class="box-radio-inputs"><input class="choice" name="texts" type="radio" value="복도" onclick="gitars(); gitas();"><span><i class="fas fa-map-signs"></i>복도</span></label>
+                <label class="box-radio-inputs"><input class="choice" name="texts" type="radio" value="세탁" onclick="gitars(); gitas();"><span><i class="fas fa-tshirt"></i>세탁</span></label>
+                <label class="box-radio-inputs"><input class="choice" name="texts" type="radio" value="기타" onclick="gitars(); gita()"><span><i class="fas fa-guitar"></i>기타</span></label><br><br>
+                <input class="text" name="lnfos" type="text" placeholder="기타사항 간단사유" style="display: none; width: 200px; margin-right: 3px;" value="0110" id="ok" required><br style="display: none;" id="okay1s">
+                <input class="text" name="Infos" type="text" placeholder="기타활동 간단사유" style="display: none; width: 200px; margin-right: 3px;" value="text" id="okay" disabled="disabled" required><br style="display: none;" id="okay1">
+                <input class="text" name="Infos" type="text" placeholder="기타 간단사유" style="display: none; width: 200px; margin-right: 3px;" value="text" id="okays" disabled="disabled" required><br style="display: none;" id="okays1">
+                <input class="text" id="class1" style="width: 30px;" name="class" type="number" min="1" max="6" inputmode="numeric" placeholder="반" required>
+                <input class="text" id="number1" style="width: 70px;" name="number" type="number" min="1" inputmode="numeric" placeholder="번호" required>
+                <input class="text" id="id1" style="width: 140px;" name="ids" type="password" placeholder="아이디" pattern="^([a-z0-9_]){4,16}$" required><br>
+                <a id="load1" style="font-size: 12px; line-height: 0px;"></a>
+                <br>
+                <input class="text" style="width: 312px; border: 1px solid #00a218; color: black;" type="submit" onclick="saveCookie()" value="➶ 나가기">
+            </form>
+            <br>
+        </div>
+        <div style="border: 1px solid black; border-radius: 10px; margin-top: 10px; position: relative; display: inline-block; padding-right: 20px; padding-left: 20px;">
+            <br>
+            <form method="POST" action="https://api.findflag.kr/student/goout/del">
+                <input class="text" name="lnfos" type="text" placeholder="기타사항 간단사유" style="display: none; width: 387px; margin-right: 3px;" value="0110" id="1ok" required><br style="display: none;" id="1okay1">
+                <input class="text" name="Infos" type="text" placeholder="기타활동 간단사유" style="display: none; width: 387px; margin-right: 3px;" value="text" id="1okay" disabled="disabled" required><br style="display: none;" id="1okay1">
+                <input class="text" name="Infos" type="text" placeholder="기타 간단사유" style="display: none; width: 387px; margin-right: 3px;" value="text" id="1okays" disabled="disabled" required><br style="display: none;" id="1okays1">
+                <input class="text" id="class2" style="width: 30px;" name="class" type="number" min="1" max="6" inputmode="numeric" placeholder="반" required>
+                <input class="text" id="number2" style="width: 70px;" name="number" type="number" min="1" inputmode="numeric" placeholder="번호" required>
+                <input class="text" id="id2" style="width: 140px;" name="ids" type="password" placeholder="아이디" pattern="^([a-z0-9_]){4,16}$" required><br>
+                <a id="load2" style="font-size: 12px; line-height: 0px;"></a>
+                <br>
+                <input class="text" style="width: 312px; border: 1px solid #00a218; color: black;" type="submit" value="➶ 들어오기">
+            </form>
+            <br>
+        </div><br>
+        <a style="font-size: 10px; line-height: 0px;">본 서비스를 이용함으로써 귀하는 </a><a href="https://yaza.live/privacy_policy/2021-09-29.html" target="_blink" style="font-size: 10px; color: black; cursor: pointer; text-decoration: underline; line-height: 0px;">개인정보처리방침</a><a style="font-size: 10px; line-height: 0px;">에 동의하는 것으로 간주됩니다.</a><br>
+        <div id="pc_info" style="display: none;">
+            <i class="fas fa-info-circle" style="font-size: 12px;"></i><a style="font-size: 12px;">PC에서 화면이 너무 작아보인다면 </a><a style="font-size: 10px; border-radius: 3px; border: 1px solid black; padding-left: 2px; padding-right: 2px;">Ctrl</a><a style="font-size: 12px;"> / </a><a style="font-size: 10px; border-radius: 3px; border: 1px solid black; padding-left: 2px; padding-right: 2px;">Cmd</a><a style="font-size: 12px;"> + </a><a style="border-radius: 3px; border: 1px solid black; font-size: 10px; padding-left: 2px; padding-right: 2px;">+</a>
+        </div>
+        <i class="fas fa-info-circle" style="font-size: 12px;"></i><a style="font-size: 12px;">문제가 발생한다면 </a><a onclick="showPopup(true);" style="font-size: 12px; cursor: pointer; text-decoration: underline;">여기</a><a style="font-size: 12px;">를 눌러 연락주세요.</a>
+    </div>
+    <script>
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            console.log("PC")
+        } else{
+            document.getElementById('pc_info').style.display = "block";
+        }
+    </script>
+    <script>
+        function getCookie(cName) {
+            cName = cName + '=';
+            var cookieData = document.cookie;
+            var start = cookieData.indexOf(cName);
+            var cValue = '';
+            if(start != -1){
+            start += cName.length;
+            var end = cookieData.indexOf(';', start);
+            if(end == -1)end = cookieData.length;
+                cValue = cookieData.substring(start, end);
+            }
+            return unescape(cValue);
+        }
+        function loadCookie(){
+            document.getElementById('class1').value = getCookie("userClass");
+            document.getElementById('number1').value = getCookie("userNumber");
+            document.getElementById('id1').value = getCookie("userID");
+            document.getElementById('class2').value = getCookie("userClass");
+            document.getElementById('number2').value = getCookie("userNumber");
+            document.getElementById('id2').value = getCookie("userID");
+        }
+        loadCookie();
+        if(document.getElementById('number1').value != "" && document.getElementById('id1').value != ""){
+            document.getElementById('load1').innerText = "⬆ 반, 번호, 아이디를 자동으로 불러왔어요!"
+        }
+        if(document.getElementById('number2').value != "" && document.getElementById('id2').value != ""){
+            document.getElementById('load2').innerText = "⬆ 반, 번호, 아이디를 자동으로 불러왔어요!"
+        }
+
+        if(location.search == "?in"){
+            if(String(getCookie("userClass")) == ""){
+                alert("현재 이 기기에서는 QR 즉시 나가기를 사용할 수 없습니다.\n\n이 알림을 닫고 나오는 창에서 딱 한 번만 정보 입력 후 나가기를 해주시면 앞으로는 정상 작동됩니다.\n단, 시크릿 탭이나 쿠키 차단이 되어있는 경우엔 정상 작동하지 않을 수 있습니다.")
+                window.location.href = 'https://yaza.live';
+            } else if(String(getCookie("userNumber")) == ""){
+                alert("현재 이 기기에서는 QR 즉시 나가기를 사용할 수 없습니다.\n\n이 알림을 닫고 나오는 창에서 딱 한 번만 정보 입력 후 나가기를 해주시면 앞으로는 정상 작동됩니다.\n단, 시크릿 탭이나 쿠키 차단이 되어있는 경우엔 정상 작동하지 않을 수 있습니다.")
+                window.location.href = 'https://yaza.live';
+            } else if(String(getCookie("userID")) == ""){
+                alert("현재 이 기기에서는 QR 즉시 나가기를 사용할 수 없습니다.\n\n이 알림을 닫고 나오는 창에서 딱 한 번만 정보 입력 후 나가기를 해주시면 앞으로는 정상 작동됩니다.\n단, 시크릿 탭이나 쿠키 차단이 되어있는 경우엔 정상 작동하지 않을 수 있습니다.")
+                window.location.href = 'https://yaza.live';
+            } else{
+                var response = '';
+				$.ajax({ type: "GET",
+         			url: "https://api.findflag.kr/student/goout/del/get/" + String(getCookie("userClass")) + "/" + String(getCookie("userNumber")) + "/" + String(getCookie("userID")),   
+         			async: false,
+         			success : function(text){
+             			response = text;
+         			}
+				});
+			alert(response);
+            window.location.href = 'https://yaza.live';
+            }
+        }
+
+        if(location.search == "?test"){
+            if(String(getCookie("userClass")) == ""){
+                alert("현재 이 기기에서는 QR 즉시 나가기를 사용할 수 없습니다.\n\n이 알림을 닫고 나오는 창에서 딱 한 번만 나가기를 해주시면 앞으로는 정상 작동됩니다.\n단, 시크릿 탭이나 쿠키 차단이 되어있는 경우엔 정상 작동하지 않을 수 있습니다.")
+                window.location.href = 'https://yaza.live';
+            } else if(String(getCookie("userNumber")) == ""){
+                alert("현재 이 기기에서는 QR 즉시 나가기를 사용할 수 없습니다.\n\n이 알림을 닫고 나오는 창에서 딱 한 번만 나가기를 해주시면 앞으로는 정상 작동됩니다.\n단, 시크릿 탭이나 쿠키 차단이 되어있는 경우엔 정상 작동하지 않을 수 있습니다.")
+                window.location.href = 'https://yaza.live';
+            } else if(String(getCookie("userID")) == ""){
+                alert("현재 이 기기에서는 QR 즉시 나가기를 사용할 수 없습니다.\n\n이 알림을 닫고 나오는 창에서 딱 한 번만 나가기를 해주시면 앞으로는 정상 작동됩니다.\n단, 시크릿 탭이나 쿠키 차단이 되어있는 경우엔 정상 작동하지 않을 수 있습니다.")
+                window.location.href = 'https://yaza.live';
+            } else{
+                alert("현재 이 기기에서 QR 즉시 나가기가 정상 작동합니다.")
+                window.location.href = 'https://yaza.live';
+            }
+        }
+    </script>
+    <!-- <br>
+    <div style="border: 1px solid black; border-radius: 10px; margin-left: 20px; margin-right: 20px;">
+        <br>
+        <form method="POST" action="https://api.findflag.kr/student/5/alldel">
+            <input class="text" name="number" type="password" placeholder="관리자 비밀번호" required>
+            <input style="font-size: 50px;" type="submit" value="인원 전체 삭제">
+        </form>
+        <br>
+    </div> -->
+</body>
+</html>

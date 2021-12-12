@@ -1,0 +1,136 @@
+
+            <!-- <form method="POST" action="https://api.findflag.kr/student/goout/go">
+                <a style="color: black; font-size: 20px;">Yaza.live - Register</a><br><br>
+                <a style="color: #EF007C; font-size: 12px;">디미고 Gmail 아이디를 본 서비스의 아이디로 사용하지 마세요.</a><br>
+                <a style="color: #EF007C; font-size: 12px;">Gmail에서 검색이 가능하여, 다른 학생이 도용할 수 있습니다.</a><br>
+                <a style="color: #EF007C; font-size: 12px;">단순한 아이디도 도용될 수 있습니다. 주의하시기 바랍니다.</a><br><br>
+                <input style="width: 100px; border: 1px solid #EF007C; color: black;  font-size: 16px;" name="number" type="number" inputmode="numeric" placeholder="학번 4자리" min="1101" max="1632" required>
+                <input style="width: 140px; border: 1px solid #a59b4e; color: black;  font-size: 16px;" name="name" type="text" placeholder="본인 이름" minlength="2" maxlength="5" required><br>
+                <input style="width: 260px; border: 1px solid #4EA1A5; color: black;  font-size: 16px;" name="id" type="password" placeholder="사용할 아이디(4글자 이상)" pattern="^([a-z0-9_]){4,16}$" required><br><br>
+                <input class="text" style="width: 312px; border: 1px solid #00a218; color: black; font-size: 16px;" type="submit" value="➶ 등록하기">
+            </form> -->
+
+
+
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/cbdb1fa702.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="https://yaza.live/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="https://yaza.live/favicon.ico" type="image/x-icon" />
+    <title>Yaza.live - 내 야자에 기술을 더하다.</title>
+    <meta property="og:title" content="Yaza.live">
+    <meta name="description" content="내 야자에 기술을 더하다.">
+    <meta property="og:description" content="내 야자에 기술을 더하다.">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+        html, body{
+            font-family: 'Noto Sans KR', sans-serif;
+            background: #EEF0F5;
+            text-align: center;
+            color: black;
+        }
+        .out{
+            width: 90%;
+            max-width: 300px;
+            height: 45px;
+            display: inline-block;
+            border-radius: 50px;
+            margin: 5px;
+            background: linear-gradient(145deg, #ffffff, #d6d8dd);
+            box-shadow:  5px 5px 10px #bec0c4,
+                        -5px -5px 10px #ffffff;
+        }
+        .outs input[type="radio"]{
+            display: none;
+        }
+        .outs input[type="radio"] + span{
+            width: 40%;
+            max-width: 200px;
+            height: 45px;
+            display: inline-block;
+            border-radius: 50px;
+            margin: 5px;
+            background: linear-gradient(145deg, #ffffff, #d6d8dd);
+            box-shadow:  5px 5px 10px #bec0c4,
+                        -5px -5px 10px #ffffff;
+        }
+        .outs input[type="radio"]:checked + span{
+            background: #EEF0F5;
+            box-shadow: inset 10px 10px 30px #caccd0,
+                        inset -10px -10px 30px #ffffff;
+        }
+        .in{
+            width: 95%;
+            display: inline-block;
+            border-radius: 50px;
+            background: #EEF0F5;
+            box-shadow: inset 5px 5px 10px #bec0c4,
+                        inset -5px -5px 10px #ffffff;
+        }
+        .ins{
+            display: inline-block;
+            border-radius: 50px;
+            margin: 7px 3px 7px 3px;
+            background: linear-gradient(145deg, #d6d8dd, #ffffff);
+            box-shadow:  5px 5px 10px #bec0c4,
+                        -5px -5px 10px #ffffff;
+        }
+        span{
+            line-height: 45px;
+            font-size: 15px;
+        }
+        i{
+            line-height: 45px;
+            padding-right: 7px;
+            font-size: 15px;
+        }
+        input{
+            line-height: 45px;
+            font-size: 15px;
+            border: none;
+            text-align: center;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <div class="in">
+        <br>
+        <a style="color: black; font-size: 20px; font-weight: 700;">Yaza.live - 내 야자에 기술을 더하다.</a>
+        <br><br>
+    </div>
+    <br><br>
+    <div class="in">
+        <br>
+        <a style="color: #EF007C; font-size: 12px;">디미고 Gmail 아이디를 본 서비스의 아이디로 사용하지 마세요.</a><br>
+        <a style="color: #EF007C; font-size: 12px;">Gmail에서 검색이 가능하여, 다른 학생이 도용할 수 있습니다.</a><br>
+        <a style="color: #EF007C; font-size: 12px;">단순한 아이디도 도용될 수 있습니다. 주의하시기 바랍니다.</a><br>
+        <br>
+    </div>
+    <br><br>
+    <div class="in">
+        <br><br>
+        <form method="POST" action="https://api.findflag.kr/student/goout/go">
+            <input class="ins" style="max-width: 300px; width: 90%;" name="number" type="number" inputmode="numeric" placeholder="학번 4자리" min="1101" max="1632" required>
+            <input class="ins" style="max-width: 300px; width: 90%;" name="name" type="text" placeholder="본인 이름" minlength="2" maxlength="5" required>
+            <input class="ins" style="max-width: 300px; width: 90%;" name="id" type="text" placeholder="아이디(4글자 이상, 소문자와 숫자만)" pattern="^([a-z0-9_]){4,16}$" required>
+            <br><br>
+            <input class="out" type="submit" value="등록하기" style="max-width: 300px; width: 90%; color: black; font-family: 'Noto Sans KR', sans-serif;">
+        </form>
+        <br><br>
+    </div>
+    <br><br>
+    <a style="font-size: 10px; line-height: 0px;">본 서비스를 이용함으로써 귀하는 </a><a href="https://yaza.live/privacy_policy/2021-09-29.html" target="_blink" style="font-size: 10px; color: black; cursor: pointer; text-decoration: underline; line-height: 0px;">개인정보처리방침</a><a style="font-size: 10px; line-height: 0px;">에 동의하는 것으로 간주됩니다.</a><br>
+    <br>
+</body>
+</html>
