@@ -1,1 +1,3 @@
-"# dimigome_web" 
+# dimigome_web
+
+내 야자에 기술을 더하다
