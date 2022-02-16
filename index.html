@@ -239,7 +239,7 @@
     <script>
         var response = ''
         $.ajax({ type: "GET",
-            url: "https://api.findflag.kr/student/goout/find/get/" + String(getCookie("userClass")) + "/" + String(getCookie("userNumber")) + "/" + String(getCookie("userID")),  
+            url: "https://api.findflag.kr/student/goout/find/get/" + String(getCookie("userNumber")) + "/" + String(getCookie("userID")),  
             timeout: 300, 
             async: false,
             success : function(text){
