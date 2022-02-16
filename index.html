@@ -142,6 +142,12 @@
             willCookie += "expires=" + date.toUTCString();
             document.cookie = willCookie;
             console.log(willCookie);
+            
+            willCookie = "";
+            willCookie += "userGrade=" + document.getElementById('grade1').value + ";";
+            willCookie += "expires=" + date.toUTCString();
+            document.cookie = willCookie;
+            console.log(willCookie);
         }
     </script>
     <br>
@@ -239,9 +245,11 @@
             return unescape(cValue);
         }
         function loadCookie(){
+            document.getElementById('grade1').value = getCookie("userGrade");
             document.getElementById('class1').value = getCookie("userClass");
             document.getElementById('number1').value = getCookie("userNumber");
             document.getElementById('id1').value = getCookie("userID");
+            document.getElementById('grade2').value = getCookie("userGrade");
             document.getElementById('class2').value = getCookie("userClass");
             document.getElementById('number2').value = getCookie("userNumber");
             document.getElementById('id2').value = getCookie("userID");
