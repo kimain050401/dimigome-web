@@ -136,18 +136,6 @@
             willCookie += "expires=" + date.toUTCString();
             document.cookie = willCookie;
             console.log(willCookie);
-
-            willCookie = "";
-            willCookie += "userClass=" + document.getElementById('class1').value + ";";
-            willCookie += "expires=" + date.toUTCString();
-            document.cookie = willCookie;
-            console.log(willCookie);
-            
-            willCookie = "";
-            willCookie += "userGrade=" + document.getElementById('grade1').value + ";";
-            willCookie += "expires=" + date.toUTCString();
-            document.cookie = willCookie;
-            console.log(willCookie);
         }
     </script>
     <br>
@@ -196,9 +184,7 @@
             <input class="ins" name="lnfos" type="text" placeholder="기타사항 간단사유" style="display: none; max-width: 300px; width: 90%;" value="1001" id="ok" required><br style="display: none;" id="okay1s">
             <input class="ins" name="Infos" type="text" placeholder="기타활동 간단사유" style="display: none; max-width: 300px; width: 90%;" value="text" id="okay" disabled="disabled" required><br style="display: none;" id="okay1">
             <input class="ins" name="Infos" type="text" placeholder="기타 간단사유" style="display: none; max-width: 300px; width: 90%;" value="text" id="okays" disabled="disabled" required><br style="display: none;" id="okays1">
-            <input class="ins" type="number" name="grade" id="grade1" min="1" max="3" placeholder="학년" style="max-width: 100px; width: 25%;" required>
-            <input class="ins" type="number" name="class" id="class1" min="1" max="6" placeholder="반" style="max-width: 100px; width: 25%;" required>
-            <input class="ins" type="number" name="number" id="number1" placeholder="번호" style="max-width: 100px; width: 25%;" required>
+            <input class="ins" type="number" name="number" id="number1" placeholder="학번 4자리" style="max-width: 200px; width: 70%%;" required>
             <input class="ins" type="password" name="ids" id="id1" placeholder="아이디" style="max-width: 300px; width: 90%;" required>
             <br>
             <a style="font-size: 10px; color: #f74b4b;">허위 정보 등록 시 학교 차원에서 불이익을 받을 수 있습니다.</a>
@@ -215,9 +201,7 @@
         <p id="form2_info" style="color: red;"></p>
         <form method="POST" action="https://api.findflag.kr/student/goout/del" id="form2">
             <input class="text" name="lnfos" type="text" placeholder="기타사항 간단사유" style="display: none; width: 387px; margin-right: 3px;" value="1001" id="1ok" required><br style="display: none;" id="1okay1">
-            <input class="ins" type="number" name="grade" id="grade2" min="1" max="3" placeholder="학년" style="max-width: 100px; width: 25%;" required>
-            <input class="ins" type="number" name="class" id="class2" min="1" max="6" placeholder="반" style="max-width: 100px; width: 25%;" required>
-    	    <input class="ins" type="number" name="number" id="number2" placeholder="번호" style="max-width: 100px; width: 25%;" required>
+            <input class="ins" type="number" name="number" id="number2" placeholder="학번 4자리" style="max-width: 200px; width: 70%%;" required>
     	    <input class="ins" type="password" name="ids" id="id2" placeholder="아이디" style="max-width: 300px; width: 90%;" required>
     	    <br><br>
     	    <input class="out" type="submit" value="들어오기" style="max-width: 300px; width: 90%; color: black;">
@@ -245,12 +229,8 @@
             return unescape(cValue);
         }
         function loadCookie(){
-            document.getElementById('grade1').value = getCookie("userGrade");
-            document.getElementById('class1').value = getCookie("userClass");
             document.getElementById('number1').value = getCookie("userNumber");
             document.getElementById('id1').value = getCookie("userID");
-            document.getElementById('grade2').value = getCookie("userGrade");
-            document.getElementById('class2').value = getCookie("userClass");
             document.getElementById('number2').value = getCookie("userNumber");
             document.getElementById('id2').value = getCookie("userID");
         }
