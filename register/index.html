@@ -161,7 +161,9 @@
         } else if(return_info == "dimigoin"){
             document.getElementById('return').innerHTML = '<div class="fail"><br><a style="color: black; font-size: 20px; font-weight: 700;">등록 실패</a><br><a style="color: black; font-size: 16px;">디미고인 로그인 정보가 올바르지 않습니다.</a><br><br></div><br><br>'
         } else if(return_info == "ready"){
-            document.getElementById('return').innerHTML = '<div class="fail"><br><a style="color: black; font-size: 20px; font-weight: 700;">등록 실패</a><br><a style="color: black; font-size: 16px;">이미 등록된 학생 정보입니다.</a><br><br></div><br><br>'
+            document.getElementById('return').innerHTML = '<div class="fail"><br><a style="color: black; font-size: 20px; font-weight: 700;">등록 실패</a><br><a style="color: black; font-size: 16px;">이미 등록되어있는 학생 정보입니다.</a><br><br></div><br><br>'
+        } else if(return_info == "number"){
+            document.getElementById('return').innerHTML = '<div class="fail"><br><a style="color: black; font-size: 20px; font-weight: 700;">등록 실패</a><br><a style="color: black; font-size: 16px;">학번 네자리를 올바르게 입력했는지 확인해주세요.</a><br><br></div><br><br>'
         }
     </script>
 </body>
