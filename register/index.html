@@ -1,1 +1,254 @@
-
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/cbdb1fa702.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="https://dimigo.me/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="https://dimigo.me/favicon.ico" type="image/x-icon" />
+    <title>디미고미 - 내 야자에 기술을 더하다</title>
+    <meta property="og:title" content="디미고미">
+    <meta name="description" content="내 야자에 기술을 더하다">
+    <meta property="og:description" content="내 야자에 기술을 더하다">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+        html, body{
+            font-family: 'Noto Sans KR', sans-serif;
+            background: #EEF0F5;
+            text-align: center;
+            color: black;
+        }
+        .out{
+            width: 90%;
+            max-width: 300px;
+            height: 45px;
+            display: inline-block;
+            border-radius: 10px;
+            margin: 5px;
+            background: linear-gradient(145deg, #ffffff, #d6d8dd);
+            box-shadow:  5px 5px 10px #bec0c4,
+                        -5px -5px 10px #ffffff;
+        }
+        .outs input[type="radio"]{
+            display: none;
+        }
+        .outs input[type="radio"] + span{
+            width: 40%;
+            max-width: 200px;
+            height: 45px;
+            display: inline-block;
+            border-radius: 10px;
+            margin: 5px;
+            background: linear-gradient(145deg, #ffffff, #d6d8dd);
+            box-shadow:  5px 5px 10px #bec0c4,
+                        -5px -5px 10px #ffffff;
+        }
+        .outs input[type="radio"]:checked + span{
+            background: #EEF0F5;
+            box-shadow: inset 10px 10px 30px #caccd0,
+                        inset -10px -10px 30px #ffffff;
+        }
+        .in{
+            width: 95%;
+            display: inline-block;
+            border-radius: 10px;
+            background: #EEF0F5;
+            box-shadow: inset 5px 5px 10px #bec0c4,
+                        inset -5px -5px 10px #ffffff;
+        }
+        .fail{
+            width: 95%;
+            display: inline-block;
+            border-radius: 10px;
+            background: #ff453a;
+            box-shadow: inset 5px 5px 10px #cc372e,
+                        inset -5px -5px 10px #ff5346;
+        }
+        .success{
+            width: 95%;
+            display: inline-block;
+            border-radius: 10px;
+            background: #0a84ff;
+            box-shadow: inset 5px 5px 10px #086acc,
+                        inset -5px -5px 10px #0c9eff;
+        }
+        .ins{
+            display: inline-block;
+            border-radius: 10px;
+            margin: 7px 3px 7px 3px;
+            background: linear-gradient(145deg, #d6d8dd, #ffffff);
+            box-shadow:  5px 5px 10px #bec0c4,
+                        -5px -5px 10px #ffffff;
+        }
+        span{
+            line-height: 45px;
+            font-size: 15px;
+        }
+        i{
+            line-height: 45px;
+            padding-right: 7px;
+            font-size: 15px;
+        }
+        input{
+            line-height: 45px;
+            font-size: 15px;
+            border: none;
+            text-align: center;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .loadingBox .circle {
+            position:fixed;
+            left:50%;
+            top:50%;
+            transform:translate(-50%, -50%);
+            width:100px;
+            height:100px;
+            border:10px solid rgb(244, 11, 126);
+            border-top:10px solid white;
+            border-radius:50em;
+            transition:all .2s;
+            animation-name: spinCircle;
+            animation-duration:.8s;
+            animation-iteration-count:infinite;
+            animation-timing-function:linear;
+        }
+        @keyframes spinCircle {
+            from {
+                transform:translate(-50%, -50%) rotate(0);
+            }
+            to {
+                transform:translate(-50%, -50%) rotate(360deg);
+            }
+        }
+        .infobox{
+            position:fixed;
+            left:50%;
+            top:50%;
+            transform:translate(-50%, -50%);
+            width: fit-content;
+            height: fit-content;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            background: #EEF0F5;
+            box-shadow: inset 5px 5px 10px #bec0c4,
+                        inset -5px -5px 10px #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div id="infobox" class="infobox" style="display: none;">
+		<a style="font-size: 16px; font-weight: bold;">입력하신 정보가 맞는지 확인해주세요.</a><br><br>
+        <a style="font-size: 12px;" id="infoboxnumber">--</a><br>
+        <a style="font-size: 12px;" id="infoboxname">--</a><br>
+        <a style="font-size: 12px;" id="infoboxid">--</a><br><br>
+        <a style="font-size: 16px;">위 정보로 등록할까요?</a><br><br>
+        <input class="out" type="button" onclick="but_fail()" value="재작성" style="display: inline-block; max-width: 100px; width: 90%; color: black; font-family: 'Noto Sans KR', sans-serif;">
+        <input class="out" type="button" onclick="but_clicks()" value="등록" style="display: inline-block; max-width: 100px; width: 90%; color: black; font-family: 'Noto Sans KR', sans-serif;">
+    </div>
+    <div id="errorbox" class="infobox" style="display: none;">
+		<a style="font-size: 16px; font-weight: bold;" id="errormsg"></a><br>
+        <input class="out" type="button" onclick="but_fails()" value="확인" style="display: inline-block; max-width: 200px; width: 90%; color: black; font-family: 'Noto Sans KR', sans-serif;">
+    </div>
+    <div id="loading" class="loadingBox" style="display: none;">
+        <div class="dim"></div>
+        <div class="circle"></div>
+    </div>
+    <script>
+        function but_click(){
+            if(document.getElementById("dimigoinid").value == "" || document.getElementById("dimigoinpw").value == "" || document.getElementById("number").value == "" || document.getElementById("name").value == "" || document.getElementById("id").value == ""){
+                document.getElementById("errormsg").innerText = "모든 입력란을 채워주세요."
+                document.getElementById("errorbox").style.display = "block"
+            } else{
+                if((/^([a-z0-9_]){4,16}$/).test(document.getElementById("id").value) == true){
+            		document.getElementById("infoboxnumber").innerText = "학번 : " + document.getElementById("number").value
+            		document.getElementById("infoboxname").innerText = "이름 : " + document.getElementById("name").value
+            		document.getElementById("infoboxid").innerText = "아이디 : " + document.getElementById("id").value
+            		document.getElementById("infobox").style.display = "block";
+                } else{
+					document.getElementById("errormsg").innerText = "아이디는 영어 소문자 또는 숫자로 구성되고, 4~16글자여야 합니다."
+                    document.getElementById("errorbox").style.display = "block"
+                }
+            }
+        }
+        function but_clicks(){
+            document.getElementById("loading").style.display = "block";
+            document.getElementById("infobox").style.display = "none";
+            document.getElementById("forms").submit()
+        }
+        function but_fail(){
+            document.getElementById("infobox").style.display = "none";
+        }
+        function but_fails(){
+            document.getElementById("errorbox").style.display = "none";
+        }
+    </script>
+    <br>
+    <div id="return"></div>
+    <div class="in">
+        <br>
+        <a style="color: black; font-size: 20px; font-weight: 700;">디미고미 - 내 야자에 기술을 더하다</a>
+        <br><br>
+    </div>
+    <br><br>
+    <div class="in">
+        <br>
+        <a style="color: #EF007C; font-size: 12px;">디미고 Gmail 아이디를 본 서비스의 아이디로 사용하지 마세요.</a><br>
+        <a style="color: #EF007C; font-size: 12px;">Gmail에서 검색이 가능하여, 다른 학생이 도용할 수 있습니다.</a><br>
+        <a style="color: #EF007C; font-size: 12px;">단순한 아이디도 도용될 수 있습니다. 주의하시기 바랍니다.</a><br>
+        <br>
+    </div>
+    <br><br>
+    <div class="in">
+        <br><br>
+        <form method="POST" action="https://api.findflag.kr/student/goout/go" id="forms">
+            <a style="font-size: 16px;">Step 1</a><br>
+            <a style="font-size: 14px;">디미고인 로그인을 통한 디미고 학생 인증</a><br>
+            <input class="ins" style="max-width: 300px; width: 90%;" id="dimigoinid" name="dimigoinid" type="text" placeholder="본인 디미고인 아이디" required>
+            <input class="ins" style="max-width: 300px; width: 90%;" id="dimigoinpw" name="dimigoinpw" type="password" placeholder="본인 디미고인 패스워드" required><br><br>
+            <a style="font-size: 16px;">Step 2</a><br>
+            <a style="font-size: 14px;">디미고미 시스템에 등록할 본인 정보 입력</a><br>
+            <input class="ins" style="max-width: 300px; width: 90%;" id="number" name="number" type="number" inputmode="numeric" placeholder="2022학년도 기준 학번 4자리" min="1101" max="2632" required>
+            <input class="ins" style="max-width: 300px; width: 90%;" id="name" name="name" type="text" placeholder="본인 이름(성 포함)" minlength="2" maxlength="5" required>
+            <input class="ins" style="max-width: 300px; width: 90%;" id="id" name="id" type="text" placeholder="디미고미에서 사용할 아이디" pattern="^([a-z0-9_]){4,16}$" required><br>
+            <a style="font-size: 12px;">아이디 조건 : 4~16글자, 소문자와 숫자만 사용 가능</a><br>
+            <a style="color: red; font-size: 12px; font-weight: bold;">2학년들, 학번 헷갈리지 마세요. "2"로 시작해야 합니다.</a>
+            <br><br>
+            <input class="out" type="button" onclick="but_click()" value="등록하기" style="max-width: 300px; width: 90%; color: black; font-family: 'Noto Sans KR', sans-serif;">
+        </form>
+        <br><br>
+    </div>
+    <br><br>
+    <a style="font-size: 10px; line-height: 0px;">본 서비스를 이용함으로써 귀하는 </a><a href="https://dimigo.me/privacy_policy" target="_blink" style="font-size: 10px; color: black; cursor: pointer; text-decoration: underline; line-height: 0px;">개인정보처리방침</a><a style="font-size: 10px; line-height: 0px;">에 동의하는 것으로 간주됩니다.</a><br>
+    <a href="https://stats.uptimerobot.com/2qABoFkDp8" target="_blink" style="font-size: 10px; color: black; cursor: pointer; text-decoration: underline; line-height: 0px;">Server Status(서버 상태)</a><a style="font-size: 10px; line-height: 0px;"> | 사용 중 문제 발생 시 </a><a href="https://open.kakao.com/me/corondev_kimain" target="_blink" style="font-size: 10px; color: black; cursor: pointer; text-decoration: underline; line-height: 0px;">관리자에게 연락</a><a style="font-size: 10px; line-height: 0px;">주세요.</a><br>
+    <br>
+    <script>
+        function get_query(){
+            var url = document.location.href;
+            var qs = url.substring(url.indexOf('?') + 1).split('&');
+            for(var i = 0, result = {}; i < qs.length; i++){
+                qs[i] = qs[i].split('=');
+                result[qs[i][0]] = decodeURIComponent(qs[i][1]);
+            }
+            return result;
+        }
+        let data = get_query();
+        let return_info = String(data.return)
+        if(return_info == "success"){
+            document.getElementById('return').innerHTML = '<div class="success"><br><a style="color: black; font-size: 20px; font-weight: 700;">등록 성공</a><br><a style="color: black; font-size: 16px;">디미고미 시스템에 정상적으로 등록되었습니다.</a><br><br></div><br><br>'
+        } else if(return_info == "dimigoin"){
+            document.getElementById('return').innerHTML = '<div class="fail"><br><a style="color: black; font-size: 20px; font-weight: 700;">등록 실패</a><br><a style="color: black; font-size: 16px;">디미고인 로그인 정보가 올바르지 않습니다.</a><br><br></div><br><br>'
+        } else if(return_info == "ready"){
+            document.getElementById('return').innerHTML = '<div class="fail"><br><a style="color: black; font-size: 20px; font-weight: 700;">등록 실패</a><br><a style="color: black; font-size: 16px;">이미 등록되어있는 학생 정보입니다.</a><br><br></div><br><br>'
+        } else if(return_info == "number"){
+            document.getElementById('return').innerHTML = '<div class="fail"><br><a style="color: black; font-size: 20px; font-weight: 700;">등록 실패</a><br><a style="color: black; font-size: 16px;">학번 네자리를 올바르게 입력했는지 확인해주세요.</a><br><br></div><br><br>'
+        }
+    </script>
+</body>
+</html>
