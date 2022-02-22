@@ -140,21 +140,30 @@
             box-shadow: inset 5px 5px 10px #bec0c4,
                         inset -5px -5px 10px #ffffff;
         }
+        .infoout{
+            position: fixed;
+            background: #DDD0D5;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <div id="infobox" class="infobox" style="display: none;">
-		<a style="font-size: 16px; font-weight: bold;">입력하신 정보가 맞는지 확인해주세요.</a><br><br>
-        <a style="font-size: 12px;" id="infoboxnumber">--</a><br>
-        <a style="font-size: 12px;" id="infoboxname">--</a><br>
-        <a style="font-size: 12px;" id="infoboxid">--</a><br><br>
-        <a style="font-size: 16px;">위 정보로 등록할까요?</a><br><br>
-        <input class="out" type="button" onclick="but_fail()" value="재작성" style="display: inline-block; max-width: 100px; width: 90%; color: black; font-family: 'Noto Sans KR', sans-serif;">
-        <input class="out" type="button" onclick="but_clicks()" value="등록" style="display: inline-block; max-width: 100px; width: 90%; color: black; font-family: 'Noto Sans KR', sans-serif;">
+    <div class="infoout" id="infoout" style="display: none;">
+        <div id="infobox" class="infobox" style="display: none;">
+	    	<a style="font-size: 16px; font-weight: bold;">입력하신 정보가 맞는지 확인해주세요.</a><br><br>
+            <a style="font-size: 12px;" id="infoboxnumber">--</a><br>
+            <a style="font-size: 12px;" id="infoboxname">--</a><br>
+            <a style="font-size: 12px;" id="infoboxid">--</a><br><br>
+            <a style="font-size: 16px;">위 정보로 등록할까요?</a><br><br>
+            <input class="out" type="button" onclick="but_fail()" value="재작성" style="display: inline-block; max-width: 100px; width: 90%; color: black; font-family: 'Noto Sans KR', sans-serif;">
+            <input class="out" type="button" onclick="but_clicks()" value="등록" style="display: inline-block; max-width: 100px; width: 90%; color: black; font-family: 'Noto Sans KR', sans-serif;">
+        </div>
     </div>
-    <div id="errorbox" class="infobox" style="display: none;">
-		<a style="font-size: 16px; font-weight: bold;" id="errormsg"></a><br>
-        <input class="out" type="button" onclick="but_fails()" value="확인" style="display: inline-block; max-width: 200px; width: 90%; color: black; font-family: 'Noto Sans KR', sans-serif;">
+    <div class="infoout" id="errorout" style="display: none;">
+        <div id="errorbox" class="infobox" style="display: none;">
+            <a style="font-size: 16px; font-weight: bold;" id="errormsg"></a><br>
+            <input class="out" type="button" onclick="but_fails()" value="확인" style="display: inline-block; max-width: 200px; width: 90%; color: black; font-family: 'Noto Sans KR', sans-serif;">
+        </div>
     </div>
     <div id="loading" class="loadingBox" style="display: none;">
         <div class="dim"></div>
@@ -165,28 +174,34 @@
             if(document.getElementById("dimigoinid").value == "" || document.getElementById("dimigoinpw").value == "" || document.getElementById("number").value == "" || document.getElementById("name").value == "" || document.getElementById("id").value == ""){
                 document.getElementById("errormsg").innerText = "모든 입력란을 채워주세요."
                 document.getElementById("errorbox").style.display = "block"
+                document.getElementById("errorout").style.display = "block"
             } else{
                 if((/^([a-z0-9_]){4,16}$/).test(document.getElementById("id").value) == true){
             		document.getElementById("infoboxnumber").innerText = "학번 : " + document.getElementById("number").value
             		document.getElementById("infoboxname").innerText = "이름 : " + document.getElementById("name").value
             		document.getElementById("infoboxid").innerText = "아이디 : " + document.getElementById("id").value
             		document.getElementById("infobox").style.display = "block";
+                    document.getElementById("infoout").style.display = "block";
                 } else{
 					document.getElementById("errormsg").innerText = "아이디는 영어 소문자 또는 숫자로 구성되고, 4~16글자여야 합니다."
                     document.getElementById("errorbox").style.display = "block"
+                    document.getElementById("errorout").style.display = "block"
                 }
             }
         }
         function but_clicks(){
             document.getElementById("loading").style.display = "block";
             document.getElementById("infobox").style.display = "none";
+            document.getElementById("infoout").style.display = "none";
             document.getElementById("forms").submit()
         }
         function but_fail(){
             document.getElementById("infobox").style.display = "none";
+            document.getElementById("infoout").style.display = "none";
         }
         function but_fails(){
             document.getElementById("errorbox").style.display = "none";
+            document.getElementById("errorout").style.display = "none";
         }
     </script>
     <br>
