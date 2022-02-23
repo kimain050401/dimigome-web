@@ -141,6 +141,7 @@
         }
     </script>
     <br>
+    <div id="return"></div>
     <div class="in">
         <br>
         <a style="color: black; font-size: 20px; font-weight: 700;">디미고미 - 내 야자에 기술을 더하다</a>
@@ -276,6 +277,30 @@
         var userAgent = navigator.userAgent;
         if (userAgent.match(/iPhone|iPad/)) {
             location.href = "dimigome://";
+        }
+        function get_query(){
+            var url = document.location.href;
+            var qs = url.substring(url.indexOf('?') + 1).split('&');
+            for(var i = 0, result = {}; i < qs.length; i++){
+                qs[i] = qs[i].split('=');
+                result[qs[i][0]] = decodeURIComponent(qs[i][1]);
+            }
+            return result;
+        }
+        let data = get_query();
+        let return_info = String(data.return)
+        if(return_info == "success"){
+            document.getElementById('return').innerHTML = '<div class="success"><br><a style="color: black; font-size: 20px; font-weight: 700;">등록 성공</a><br><a style="color: black; font-size: 16px;">디미고미 시스템에 정상적으로 등록되었습니다.</a><br><br></div><br><br>'
+        } else if(return_info == "dimigoin"){
+            document.getElementById('return').innerHTML = '<div class="fail"><br><a style="color: black; font-size: 20px; font-weight: 700;">등록 실패</a><br><a style="color: black; font-size: 16px;">디미고인 로그인 정보가 올바르지 않습니다.</a><br><br></div><br><br>'
+        } else if(return_info == "ready"){
+            document.getElementById('return').innerHTML = '<div class="fail"><br><a style="color: black; font-size: 20px; font-weight: 700;">등록 실패</a><br><a style="color: black; font-size: 16px;">이미 등록되어있는 학생 정보입니다.</a><br><br></div><br><br>'
+        } else if(return_info == "number"){
+            document.getElementById('return').innerHTML = '<div class="fail"><br><a style="color: black; font-size: 20px; font-weight: 700;">등록 실패</a><br><a style="color: black; font-size: 16px;">학번 네자리를 올바르게 입력했는지 확인해주세요.</a><br><br></div><br><br>'
+        } else if(return_info == "dimigoinnumber"){
+            document.getElementById('return').innerHTML = '<div class="fail"><br><a style="color: black; font-size: 20px; font-weight: 700;">등록 실패</a><br><a style="color: black; font-size: 16px;">입력하신 정보와 디미고인 계정 명의(학번)가 다릅니다.</a><br><br></div><br><br>'
+        } else if(return_info == "dimigoinname"){
+            document.getElementById('return').innerHTML = '<div class="fail"><br><a style="color: black; font-size: 20px; font-weight: 700;">등록 실패</a><br><a style="color: black; font-size: 16px;">입력하신 정보와 디미고인 계정 명의(이름)가 다릅니다.</a><br><br></div><br><br>'
         }
     </script>
 </body>
