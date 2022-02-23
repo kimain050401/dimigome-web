@@ -11,6 +11,7 @@
     <meta property="og:title" content="디미고미">
     <meta name="description" content="내 야자에 기술을 더하다">
     <meta property="og:description" content="내 야자에 기술을 더하다">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
         html, body{
@@ -176,20 +177,20 @@
     <script>
         function but_click(){
             if(document.getElementById("dimigoinid").value == "" || document.getElementById("dimigoinpw").value == "" || document.getElementById("number").value == "" || document.getElementById("name").value == "" || document.getElementById("id").value == ""){
-                document.getElementById("errormsg").innerText = "모든 입력란을 채워주세요."
-                document.getElementById("errorbox").style.display = "block"
-                document.getElementById("errorout").style.display = "block"
+                document.getElementById("errormsg").innerText = "모든 입력란을 채워주세요. 학번은 숫자여야 합니다."
+                $('div#errorbox').fadeIn(500);
+                $('div#errorout').fadeIn(500);
             } else{
                 if((/^([a-z0-9_]){4,16}$/).test(document.getElementById("id").value) == true){
             		document.getElementById("infoboxnumber").innerText = "학번 : " + document.getElementById("number").value
             		document.getElementById("infoboxname").innerText = "이름 : " + document.getElementById("name").value
             		document.getElementById("infoboxid").innerText = "아이디 : " + document.getElementById("id").value
-            		document.getElementById("infobox").style.display = "block";
-                    document.getElementById("infoout").style.display = "block";
+            		$('div#infobox').fadeIn(500);
+                    $('div#infoout').fadeIn(500);
                 } else{
 					document.getElementById("errormsg").innerText = "아이디는 영어 소문자 또는 숫자로 구성되고, 4~16글자여야 합니다."
-                    document.getElementById("errorbox").style.display = "block"
-                    document.getElementById("errorout").style.display = "block"
+                    $('div#errorbox').fadeIn(500);
+                    $('div#errorout').fadeIn(500);
                 }
             }
         }
@@ -200,12 +201,12 @@
             document.getElementById("forms").submit()
         }
         function but_fail(){
-            document.getElementById("infobox").style.display = "none";
-            document.getElementById("infoout").style.display = "none";
+            $('div#infobox').fadeOut(500);
+            $('div#infoout').fadeOut(500);
         }
         function but_fails(){
-            document.getElementById("errorbox").style.display = "none";
-            document.getElementById("errorout").style.display = "none";
+            $('div#errorbox').fadeOut(500);
+            $('div#errorout').fadeOut(500);
         }
     </script>
     <br>
