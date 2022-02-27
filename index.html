@@ -183,8 +183,8 @@
         <a style="color: black; font-size: 20px; font-weight: 700;">디미고미 - 내 야자에 기술을 더하다</a>
         <br><br>
     </div>
-    <div id="importantinfobox" style="width: 95%; display: none;">
-        <br>
+    <br>
+    <div id="importantinfobox" style="display: none;">
         <div class="fail" id="importantinfo" style="font-size: 12px;" onclick="location.href='https://dimigo.me/register'">
             <br>
             <a style="color: black;">2022학년도 디미고미 사용 전 정보 재등록이 필요합니다.</a><br>
@@ -192,7 +192,7 @@
             <br><br>
         </div>
     </div>
-    <br><br>
+    <br>
     <div class="in">
         <br>
         <a style="display: inline-block; width: fit-content; color: white; font-size: 14px; font-weight: 300; background-color: #209e00; padding-right: 10px; padding-left: 10px; padding-top: 3px; padding-bottom: 3px; border-radius: 10px; margin-right: 5px;">Beta</a>
@@ -292,7 +292,7 @@
         console.log(response)
         if(response == "미인가 접근" || response == "로그인 정보 없음" || response == "번호 오류" || response == "아이디 오류"){
             document.getElementById("yourLocation").style.color = "red"
-            document.getElementById("importantinfobox").style.display = "inline-block"
+            document.getElementById("importantinfobox").style.display = "block"
         }
         else if(response == "미등록"){
             document.getElementById("yourLocation").style.color = "green"
