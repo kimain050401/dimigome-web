@@ -292,7 +292,7 @@
         console.log(response)
         if(response == "미인가 접근" || response == "로그인 정보 없음" || response == "번호 오류" || response == "아이디 오류"){
             document.getElementById("yourLocation").style.color = "red"
-            document.getElementById("importantinfobox").style.display = "block"
+            document.getElementById("importantinfobox").style.display = "inline-block"
         }
         else if(response == "미등록"){
             document.getElementById("yourLocation").style.color = "green"
