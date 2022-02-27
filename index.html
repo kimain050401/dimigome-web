@@ -110,6 +110,21 @@
             -webkit-appearance: none;
             margin: 0;
         }
+        @keyframes pulse{
+			0% {
+                background: #ff453a;
+                box-shadow: inset 5px 5px 10px #cc372e,
+                            inset -5px -5px 10px #ff5346;
+			}
+			100% {
+                background: #EEF0F5;
+                box-shadow: inset 5px 5px 10px #bec0c4,
+                            inset -5px -5px 10px #ffffff;
+			}
+		}
+		#importantinfo{
+			animation: pulse 3s infinite;
+		}
     </style>
 </head>
 <body>
@@ -164,7 +179,7 @@
         <br><br>
     </div>
     <br><br>
-    <div class="success" style="font-size: 12px; background-color: #f74b4b; box-shadow: inset 5px 5px 10px #d24040, inset -5px -5px 10px #ff5656;" onclick="location.href='https://dimigo.me/register'">
+    <div class="fail" id="importantinfo" style="font-size: 12px;" onclick="location.href='https://dimigo.me/register'">
         <br>
         <a style="color: white;">2022학년도 디미고미 사용 전 정보 재등록이 필요합니다.</a><br>
         <a style="color: white;">여기를 눌러 디미고미 시스템에 학생 정보를 등록해주세요.</a>
