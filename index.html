@@ -127,9 +127,9 @@
                             inset -5px -5px 10px #ff5346;
 			}
 		}
-		/* #importantinfo{
+		#importantinfo{
 			animation: pulse 3s infinite;
-		} */
+		}
     </style>
 </head>
 <body>
@@ -183,12 +183,14 @@
         <a style="color: black; font-size: 20px; font-weight: 700;">디미고미 - 내 야자에 기술을 더하다</a>
         <br><br>
     </div>
-    <br><br>
-    <div class="fail" id="importantinfo" style="font-size: 12px;" onclick="location.href='https://dimigo.me/register'">
-        <br>
-        <a style="color: black;">2022학년도 디미고미 사용 전 정보 재등록이 필요합니다.</a><br>
-        <a style="color: black;">여기를 눌러 디미고미 시스템에 학생 정보를 등록해주세요.</a>
+    <div id="importantinfobox">
         <br><br>
+        <div class="fail" id="importantinfo" style="font-size: 12px;" onclick="location.href='https://dimigo.me/register'">
+            <br>
+            <a style="color: black;">2022학년도 디미고미 사용 전 정보 재등록이 필요합니다.</a><br>
+            <a style="color: black;">여기를 눌러 디미고미 시스템에 학생 정보를 등록해주세요.</a>
+            <br><br>
+        </div>
     </div>
     <br><br>
     <div class="in">
@@ -290,18 +292,19 @@
         console.log(response)
         if(response == "미인가 접근" || response == "로그인 정보 없음" || response == "번호 오류" || response == "아이디 오류"){
             document.getElementById("yourLocation").style.color = "red"
-            document.getElementById("importantinfo").style.animation = "pulse 3s infinite"
+            document.getElementById("importantinfobox").style.display = "block"
         }
         else if(response == "미등록"){
             document.getElementById("yourLocation").style.color = "green"
-            document.getElementById("importantinfo").style.animation = "none"
+            document.getElementById("importantinfobox").style.display = "none"
         } else{
             document.getElementById("yourLocation").style.color = "blue"
-            document.getElementById("importantinfo").style.animation = "none"
+            document.getElementById("importantinfobox").style.display = "none"
         }
         document.getElementById("yourLocation").innerText = response
         if(response == "Error"){
             document.getElementById("yourLocation").style.color = "red"
+            document.getElementById("importantinfobox").style.display = "none"
             document.getElementById("yourLocation").innerText = "서버 사망"
             document.getElementById("form1").style.display = "none"
             document.getElementById("form2").style.display = "none"
