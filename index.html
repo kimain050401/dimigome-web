@@ -127,9 +127,9 @@
                             inset -5px -5px 10px #ff5346;
 			}
 		}
-		#importantinfo{
+		/* #importantinfo{
 			animation: pulse 3s infinite;
-		}
+		} */
     </style>
 </head>
 <body>
@@ -290,11 +290,14 @@
         console.log(response)
         if(response == "미인가 접근" || response == "로그인 정보 없음" || response == "번호 오류" || response == "아이디 오류"){
             document.getElementById("yourLocation").style.color = "red"
+            document.getElementById("importantinfo").style.animation = "pulse 3s infinite"
         }
         else if(response == "미등록"){
             document.getElementById("yourLocation").style.color = "green"
+            document.getElementById("importantinfo").style.animation = "none"
         } else{
             document.getElementById("yourLocation").style.color = "blue"
+            document.getElementById("importantinfo").style.animation = "none"
         }
         document.getElementById("yourLocation").innerText = response
         if(response == "Error"){
